@@ -163,7 +163,8 @@
             <top>bigpad</top>
             <height>posterh</height>
             <control type="group">
-                <width>720</width>
+                <!-- DLS wider for global.widescreen: 720 to 750 -->
+                <width>750</width>
                 <include condition="!Skin.HasSetting(SwitchSides)">Defs_LeftSide</include>
                 <include condition="Skin.HasSetting(SwitchSides)">Defs_RightSide</include>
                 <include>Object_Background</include>
@@ -171,10 +172,12 @@
                     <param name="id" value="577" />
                     <param name="width" value="720" />
                     <param name="name" value="$LOCALIZE[31022]" />
-                    <param name="condition" value="[Container.Content(movies) + [String.IsEqual(Skin.String(Skin.ForcedView.movies),$LOCALIZE[31022]) | String.IsEmpty(Skin.String(Skin.ForcedView.movies)) ]] | [Container.Content(tvshows) + [String.IsEqual(Skin.String(Skin.ForcedView.tvshows),$LOCALIZE[31022]) | String.IsEmpty(Skin.String(Skin.ForcedView.tvshows)) ]] + !Skin.HasSetting(global.widescreen)" />
+                    <!-- DLS remove restriction blocking MediaInfo3 from being used when global.widescreen is set -->                    
+                    <param name="condition" value="[Container.Content(movies) + [String.IsEqual(Skin.String(Skin.ForcedView.movies),$LOCALIZE[31022]) | String.IsEmpty(Skin.String(Skin.ForcedView.movies)) ]] | [Container.Content(tvshows) + [String.IsEqual(Skin.String(Skin.ForcedView.tvshows),$LOCALIZE[31022]) | String.IsEmpty(Skin.String(Skin.ForcedView.tvshows)) ]]" />                    
                 </include>
             </control>
-            <include>Object_ExtraInfo2</include>
+            <!-- DLS use Object_ExtraInfo2W instead of Object_ExtraInfo2 for correct spacing on wide layout -->
+            <include>Object_ExtraInfo2W</include>
         </control>
     </include>
 
@@ -680,6 +683,18 @@
                     <visible>String.IsEmpty(ListItem.Overlay) + ![Skin.HasSetting(music.showuserratings) + [Container.Content(albums) | Container.Content(songs)]]</visible>
                     <visible>!Container.Content(seasons) + !Container.Content(sets)</visible>
                 </control>
+                <!-- DLS add episode count when displaying seasons -->
+                <control type="label">
+                    <left>30</left>
+                    <right>140</right>
+                    <top>0</top>
+                    <height>100%</height>
+                    <align>right</align>
+                    <font>Font-ListInfo</font>
+                    <textcolor>ListLabel</textcolor>
+                    <label>$INFO[ListItem.Property(UnWatchedEpisodes)] / $INFO[ListItem.Property(TotalEpisodes)] episodes</label>
+                    <visible>Container.Content(seasons) + ListItem.Property(TotalEpisodes)</visible>
+                </control>
 
                 <!-- Indicator -->
                 <control type="label" description="invisibledelimiter">
@@ -858,6 +873,18 @@
                     <label>$VAR[Label_Label3]</label>
                     <visible>String.IsEmpty(ListItem.Overlay) + ![Skin.HasSetting(music.showuserratings) + [Container.Content(albums) | Container.Content(songs)]]</visible>
                     <visible>!Container.Content(seasons) + !Container.Content(sets)</visible>
+                </control>
+                <!-- DLS add episode count when displaying seasons -->
+                <control type="label">
+                    <left>30</left>
+                    <right>140</right>
+                    <top>0</top>
+                    <height>100%</height>
+                    <align>right</align>
+                    <font>Font-ListInfo</font>
+                    <textcolor>Selected</textcolor>
+                    <label>$INFO[ListItem.Property(UnWatchedEpisodes)] / $INFO[ListItem.Property(TotalEpisodes)] episodes</label>
+                    <visible>Container.Content(seasons) + ListItem.Property(TotalEpisodes)</visible>
                 </control>
 
                 <!-- Indicator -->

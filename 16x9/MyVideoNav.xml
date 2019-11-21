@@ -38,7 +38,8 @@
             <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.55)">Viewtype_IconWide</include>
             <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.56)">Viewtype_IconFanart</include>
             <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.52)">Viewtype_MediumIcon</include>
-            <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.525) + !Skin.HasSetting(global.widescreen)">Viewtype_BigIcon</include>
+            <!-- DLS remove exclusion of view on widescreen setting -->            
+            <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.525)">Viewtype_BigIcon</include>
             <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.58)">Viewtype_Lovefilm</include>
             <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.535)">Viewtype_ShowCase</include>
 

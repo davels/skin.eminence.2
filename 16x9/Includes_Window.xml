@@ -1931,7 +1931,8 @@
                     <width>147</width>
                     <bottom>70</bottom>
                     <aspectratio>keep</aspectratio>
-                    <texture fallback="DefaultAddonVideo.png">$INFO[Player.Art(thumb)]</texture>
+                    <!-- DLS in the OSD use poster instead of thumb for movies -->
+                    <texture fallback="DefaultAddonVideo.png">$INFO[Player.Art(poster)]</texture>
                     <visible>String.IsEmpty(Player.Art(tvshow.poster))</visible>
                 </control>
                 <control type="group">

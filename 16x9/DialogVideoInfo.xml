@@ -44,7 +44,8 @@
                 </control>
                 <include content="Object_Poster" condition="!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))">
                     <param name="flipx" value="false" />
-                    <param name="width" value="posterw" />
+                    <!-- DLS widescreen variable posterw=480, a lot of posters are 1000x1426 instead of 1500, so increase to 490, OR maybe not -->
+                    <param name="width" value="490" />
                 </include>
                 <include content="Object_Poster" condition="String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))">
                     <param name="flipx" value="false" />
@@ -529,6 +530,18 @@
                             <onfocus>ClearProperty(list)</onfocus>
                         </control>
                         -->
+                    
+                        <!-- DLS Add a More Info button -->
+                        <control type="button" id="666">
+                            <label>More Info</label>
+                            <include>Defs_OptionButton3</include>
+                            <onfocus>ClearProperty(list)</onfocus>
+                            <!-- <onclick>RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[ListItem.DBID])</onclick> -->
+                            <onclick condition="Container.Content(movies)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Title],imdb_id=$INFO[ListItem.IMDBNumber])</onclick>
+                            <!-- tv shows are scraped with tvdb so kodi calls the tvdbid the IMDBNumber -->
+                            <onclick condition="Container.Content(tvshows)">RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.TvShowTitle],tvdb_id=$INFO[ListItem.IMDBNumber])</onclick>
+                        </control>
+                    
                     </control>
 
                     <!-- CAST -->

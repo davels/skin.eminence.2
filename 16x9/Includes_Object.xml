@@ -604,6 +604,7 @@
                     <control type="image">
                         <width>100%</width>
                         <height>100%</height>
+                        <!-- DLS change stretch to keep, so poster in VideoDialog looks correct (don't know what else that effects) OR maybe not -->                         
                         <aspectratio>stretch</aspectratio>
                         <fadetime>200</fadetime>
                         <texture background="true">$VAR[Image_Poster]</texture>
@@ -687,6 +688,44 @@
                     <include>Object_Background</include>
                     <control type="image">
                         <aspectratio>scale</aspectratio>
+                        <fadetime>200</fadetime>
+                        <texture background="true">$VAR[Image_Poster]</texture>
+                    </control>
+                </control>
+                <include>Object_ExtraInfo_Textbox</include>
+            </control>
+        </definition>
+    </include>
+
+    <!-- DLS modified version of Object_ExtraInfo2 for wide layout -->
+    <include name="Object_ExtraInfo2W">
+        <definition>
+            <control type="group">
+                <include condition="Skin.HasSetting(SwitchSides)">Defs_LeftSide</include>
+                <include condition="!Skin.HasSetting(SwitchSides)">Defs_RightSide</include>
+                <width>1100</width>
+                <height>posterh</height>
+                <control type="group">
+                    <right>0</right>
+                    <width>720</width>
+                    <height>405</height>
+                    <include>Object_Background</include>
+                    <control type="image">
+                        <texture colordiffuse="FF000000">common/white.png</texture>
+                    </control>
+                    <control type="image">
+                        <aspectratio>keep</aspectratio>
+                        <fadetime>200</fadetime>
+                        <texture background="true">$VAR[Image_Thumb]</texture>
+                    </control>
+                </control>
+                <control type="group">
+                    <right>820</right>
+                    <width>280</width>
+                    <height>405</height>
+                    <include>Object_Background</include>
+                    <control type="image">
+                        <aspectratio>stretch</aspectratio>
                         <fadetime>200</fadetime>
                         <texture background="true">$VAR[Image_Poster]</texture>
                     </control>

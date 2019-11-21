@@ -420,6 +420,19 @@
         <value condition="String.IsEqual(ListItem.MPAA,nc)">NC-17</value>
         <value condition="String.IsEqual(ListItem.MPAA,r)">R</value>
         <value condition="String.IsEqual(ListItem.MPAA,r18)">R18</value>
+        
+        <!-- DLS mpaa for canada -->
+        <value condition="String.IsEqual(ListItem.MPAA,14a)">14A</value>
+        <value condition="String.IsEqual(ListItem.MPAA,18a)">18A</value>
+        <value condition="String.IsEqual(ListItem.MPAA,CA:g)">G</value>
+        <value condition="String.IsEqual(ListItem.MPAA,CA:pg)">PG</value>
+        <value condition="String.IsEqual(ListItem.MPAA,CA:14a)">14A</value>
+        <value condition="String.IsEqual(ListItem.MPAA,CA:18a)">18A</value>
+        <value condition="String.IsEqual(ListItem.MPAA,CA:R)">R</value>
+        <value condition="String.Contains(ListItem.MPAA,rated 14a)">14A</value>
+        <value condition="String.Contains(ListItem.MPAA,rated 18a)">18A</value>
+        <!-- -->
+        
         <value condition="String.Contains(ListItem.MPAA,rated pg-13)">PG-13</value>
         <value condition="String.Contains(ListItem.MPAA,rated pg)">PG</value>
         <value condition="String.Contains(ListItem.MPAA,rated g)">G</value>

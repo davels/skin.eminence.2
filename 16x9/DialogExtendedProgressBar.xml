@@ -49,7 +49,8 @@
             <control type="group">
                 <visible>Window.IsVisible(home) | Window.IsVisible(weather)</visible>
                 <visible>!Window.IsActive(DialogNotification.xml)</visible>
-                <bottom>266</bottom>
+                <!-- DLS move down the scanning icon/text to match the lower position of the background: 266 => 236-->
+                <bottom>236</bottom>
                 <!-- <animation effect="slide" tween="quadratic" easing="in" time="200" end="0,266" start="0">Hidden</animation> -->
                 <animation effect="slide" start="-1200" end="0" time="250">WindowOpen</animation>
                 <animation effect="slide" end="-1200" start="0" time="250">WindowClose</animation>
